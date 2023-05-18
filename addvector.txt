@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<iostream>
+#include<cstdlib>
+#include<omp.h> //allow a programmer to use parallel paradigms
+using namespace std;
+#define MAX 100
+int main()
+{
+int a[MAX],b[MAX],c[MAX],i;
+cout<<"\n\tFIRST VECTOR :-\n\n";
+#pragma omp parallel for //Assign random values to Vector.
+for(i=0;i<MAX;i++)
+{
+a[i]=rand()%1000;
+}
+for(i=0;i<MAX;i++) //Display the vector values.
+{
+cout<<"\t"<<a[i];
+}
+cout<<"\n";
+cout<<"\n\tSECOND VECTOR :-\n\n";
+#pragma omp parallel for //Assign random values to Vector.
+for(i=0;i<MAX;i++)
+{
+b[i]=rand()%1000;
+}
+for(i=0;i<MAX;i++) //Display the vector values.
+{
+cout<<"\t"<<b[i];
+}
+cout<<"\n";
+cout<<"\n\n\tADDITION OF LARGE VECTORS(a,b,c):-\n";
+#pragma omp parallel for // Add both vector values.
+for(i=0;i<MAX;i++)
+{
+c[i]=a[i]+b[i];
+}
+cout<<"\n Vector-1 + Vector-2 = \tResult";
+cout<<"\n ---------------------------------------";
+for(i=0;i<MAX;i++) //Display the result of addition of Vector.
+{
+cout<<"\n\t"<<a[i]<<"\t+\t"<<b[i]<<"\t=\t"<<c[i];
+}
+cout<<"\n\n";
+}
