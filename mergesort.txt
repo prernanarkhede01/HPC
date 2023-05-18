@@ -73,4 +73,3 @@ cout<<"\n"<<a[i];
 } // Cout<<Stop-Start
 return 0;
 }
-Oupu
